@@ -6,8 +6,8 @@
 
 		<title>reveal.js – The HTML Presentation Framework</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Deep Learning, Vision, and Others">
+		<meta name="author" content="Lijun Wang">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,13 +40,272 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+                                <section data-transition="zoom" data-background="fig/deep_dream.jpg" >
+                                        <br><br>
+					<h1>Deep Learning, Vision, and Others</h1>
+                                        <br>
+                                        <h3 background-color:rgba(255,255,255,0.8)>
+                                        <!--  <font color="red">Created by <a href="https://scholar.google.com/citations?user=EfTwkXMolscC&hl=en">Lijun Wang</a></font> -->
+                                         Created by <a href="https://scholar.google.com/citations?user=EfTwkXMolscC&hl=en">Lijun Wang</a> 
+					</h3>
 				</section>
+                                <section>
+                                        <section>
+                                                <h2> What is Deep Networks?</h2>
+                                                <ul>
+                                                        <li><p class="fragment"> What is neural networks (CNNs, RNNs, SAE, DBN)?</p></li>
+                                                        <li><p class="fragment"> How to distinguish deep and shallow models?</p></li>
+                                                </ul>
+                                                <p class="fragment"> Are they deep or shallow models: <span class=fragment>SVMs, </span>
+                                                <span class=fragment>three-layer CNNs, </span> 
+                                                <span class=fragment>20-layer CNNs?</span></p></li>
+                                        </section>
+                                        <section>
+                                                <h2>The Universal Appriximator Theorem [1]</h2>
+                                                <blockquote>A neural network with at least one hidden layer can represent any function to an arbitary degree of
+                                                accuracy so long as its hidden layer is permitted to have enough units.</blockquote>
+                                                <small>[1] Hornik, Kurt, Stinchcombe, Maxwell, and White, Halbert. Multilayer feedforward networks are universal
+                                                approximators. Neural Networks, 1989</small>
+                                        </section>
+                                        <section>
+                                                <h2>So What?</h2>
+                                                <ul>
+                                                    <li>Shallow models: overfitting, reducing model complexity, adding regularization. </li> 
+                                                    <li>Deep models: underfitting, increasing model complexity, optimization, computation resource</li>
+
+
+
+                                                </ul>
+                                                <img width=50% data-src="fig/deep_shallow.png">
+                                        </section>
+                                </section>
+                                <section>
+                                        <h2>Overview</h2><br>
+                                        <ul>
+                                                <li><h3>Image Classification</h3></li>
+                                                <li><h3>Object Detection</h3></li>
+                                                <li><h3>Dense Prediction</h3></li>
+                                                <li><h3>Sequance Modeling</h3></li>
+                                        </ul>
+                                </section>
+                                <section data-transition="zoom">
+                                        <h2>Image Classification</h2>
+                                        </br>
+                                        <ul>
+                                                <li><h3>Alex Net</h3></li>
+                                                <li><h3>VGG Net</h3></li>
+                                                <li><h3>GoogLe Net</h3></li>
+                                                <li><h3>Deep Residual Net</h3></li>
+                                        </ul>
+                                        
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2> Alex Net (2012, Top5: 16.4%)</h2>
+                                                <p>5 Conv + 3 fully connected</p>
+                                                <img width=88% data-src="fig/alex.png">
+                                                <img width=88% data-src="fig/alex_res.png">
+                                                
+                                        </section>
+                                        <section>
+                                                <h2>New Technologies (Tricks)</h2>
+                                                <ul>
+                                                        <li>ReLU non-linear units </li>
+                                                        <li>Dropout</li>
+                                                        <li>Local response normalization</li>
+                                                        <li>Data augmentation</li>
+                                                        <li class="fragment highlight-red">1.2 million training + 50k validation</li>
+                                                        <li class="fragment highlight-red">GPU training</li>
+                                                </ul>
+                                                
+                                        </section>
+
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2> VGG Net (2014, Top5: 7.32%)
+                                                <img width = 70% data-src="fig/vgg.png">
+                                        </section>
+                                        <section> 
+                                                <h2>New Knowledge (Feature)</h2>
+                                                <ul>
+                                                        <li class=fragment> Increasing depth with small (3x3) convolution filters.</li>
+                                                        <ul>
+                                                                <li class=fragment> A stack of two 3x3 conv layers has an effecitve receptive field of 5x5,</li>
+                                                                <li class=fragment> but incorparates one additional non-linear layers,</li>
+                                                                <li class=fragment> and reduces parameters</li>
+                                                        </ul>
+                                                        <li class=fragment> Preserve time complextiy per layer.</li>
+                                                        <ul>
+                                                                <li class=fragment> Layers with same output feature map size have the same number of filters.</li>
+                                                                <li class=fragment> If the feature map size is halved, the number of filters is doubled.</li>
+                                                        </ul>
+                                                </ul>
+
+                                        </section>
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2>GoogLeNet (2014, Top5: 6.67%)</h2>
+                                                <img width=98% data-src="fig/googlenet.png">
+                                        </section>
+                                        <section>
+                                                <h2>Architecture Designs </h2>
+                                                <ul>
+                                                        <li class=fragment> <p>Global average pooling[2] before fully connected layers.</p></li>
+                                                        <li class=fragment> <p>Multiple loss layers to enforce gradient back-propagation and encourage discrimination in lower layers.</p></li>
+                                                        <li class=fragment> <p>Inceptions</p></li>
+                                                </ul> <br><br><br><br><br>
+                                                <small>[2] Min Lin el al. Network in network. CoRR, abs/1312.4400, 2013.</small>
+                                        </section>
+                                        <section>
+                                                <h2> Inception </h2>
+                                                <ul>
+                                                        <li> Increasing feature map channels without blowing-up computational complexity.
+                                                        <li> Processing signals at different scales and aggregating for abstraction. 
+                                                </ul><br><br>
+                                                <img width=90% data-src="fig/inception.png">
+                                        </section>
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2> Deep Resedual Network <small>(2015, Top5: 3.57% human-level: 5.1%)</small></h2>
+                                                <blockquote>Degradation problem: with network depth increasing, accuracy gets asturated and then degrades. </blockquote>
+                                                <img width=90% data-src="fig/degradation.png">
+                                        </section>
+                                        <section>
+                                                <h2>Residual Learning </h2>
+                                                <ul>
+                                                        <li><p>Fit a residual mapping $\mathcal{F}(\mathbf{x}):=\mathcal{H}(\mathbf{x})-\mathbf{x}$, 
+                                                        rather than fitting the original mapping $\mathcal{H}(\mathcal{x})$</p></li>
+                                                        <li>It is easier to optimize the residual mapping (Considering an identity mapping as optimal).</li>
+                                                </ul><br>
+                                                <img width = 60% data-src="fig/res_learn.png">
+                                        </section>
+                                        <section>
+                                                <h2>Network Architecture</h2>
+                                                <img width=100% data-src="fig/res.png">
+                                        </section>
+                                        <section>
+                                                <h2>Building Blocks</h2>
+                                                <p>Identity mapping by short connect.</p>
+                                                <img width=90% data-src="fig/shortconnect.png">
+                                                <h3>         Naive     v.s.    Bottleneck  </3>
+                                        </section>
+                                        <section>
+                                                <h2>Deep Residual Net Address Degradation</h2>
+                                                <img width=90% data-src="fig/res_res.png">
+                                        </section>
+                                </section>
+                                <section data-transition="zoom">
+                                        <h2>Object Detection</h2>
+                                        </br>
+                                        <ul>
+                                                <li><h3>R-CNN</h3></li>
+                                                <li><h3>Fast R-CNN</h3></li>
+                                                <li><h3>Faster R-CNN</h3></li>
+                                                <li><h3>YOlO</h3></li>
+                                        </ul>
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2>R-CNN: Regions with CNN Features<h2>
+                                                <img width=90% data-src="fig/rcnn.jpg">
+                                        </section>
+                                        <section>
+                                                <h2>Pros and Cons</h2>
+                                                <ul>
+                                                        <li class="fragment">The first detector eploring deep CNN features with excellent performance.</li>
+                                                        <li class="fragment">Training is a multi-stage pipeline</li>
+                                                        <li class="fragment">Training is expensive in sapce and time</li>
+                                                        <li class="fragment">Object detection is slow (47s/f)</li>
+                                                </ul>
+                                        </section>
+
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2>Fast R-CNN</h2>
+                                                <img width=90% data-src="fig/fast_rcnn">
+                                        </section>
+                                        <section>
+                                                <h2>Key Features</h2>
+                                                <ol>
+                                                        <li class="fragment">RoI pooling layer: extracts fixed length feature for each region proposal.</li>
+                                                        <li class="fragment">Multitask Learning: $L(p,u,t^u,v)=L_{cls}(p,u) + \lambda L_{loc}(t^u,v)$</li>
+                                                </ol>
+                                                </br><br><br>
+                                                <ul>
+                                                        <li class="fragment">Training is single-stage and update all network layers.</li>
+                                                        <li class="fragment">No disk storage is required for feature caching.</li>
+                                                </ul>
+                                        </section>
+                                </section>
+                                <section>
+                                        <section>
+                                                <h2>Faster R-CNN</h2>
+                                                <img width=40% data-src="fig/faster_rcnn.png">
+                                                <ul>
+                                                        <li>Feature NEt + RPN + Fast R-CNN </li>
+                                                        <li>Share deep features between object proposal and detection.</li>
+                                        </section>
+                                        <section>
+                                                <h2>Region Proposal Net (RPN)</h2>
+                                                <div>
+                                                        <div class="left" style="float: left; width: 50%">
+                                                                <ul>
+                                                                        <li class="fragment">Slide a 3x3 filter on the convolution feature map to obtain a feature vector.</li>
+                                                                        <li class="fragment">Two sibling layers: box regression (reg) and classificaion (cls)</li>
+                                                                        <li class="fragment">For each window center, reg outputs 4k coordinates, cls outputs 2k class score with respect to k anchors.</li>
+                                                                </ul>
+                                                        </div>
+                                                        <div class="right" style="float: right; width: 50%">
+                                                        <br><br>
+                                                                <img width=100% data-src="fig/rpn.png">
+                                                        </div>
+                                                </div>
+
+                                        </section>
+                                        <section>
+                                                <h2>Training RPN, Fast R-CNN, and Feature Net</h2>
+                                                <div>
+                                                        <div class="left" style="float: left; width: 50%">
+                                                                <ul>
+                                                                        <li>Alternating training.</li>
+                                                                        <li>Approximate joint training.</li>
+                                                                        <li>Non-approximate joint training.</li>
+                                                                </ul>
+                                                        </div>
+                                                        <div class="right" style="float: right; width: 50%">
+                                                                <img width=100% data-src="fig/faster_rcnn.png">
+                                                        </div>
+                                                </div>
+
+                                        </section>
+                                </section>
+
+
+
+                                <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+                                <section>
+                                        <h2> What is Deep Networks</h2> 
+                                        <p class="fragment shrink"> waaaa </p>
+					<ul>
+						<li><p class="fragment shrink">What is neural networks (CNNs, RNN, DAE, DBN, DBM)?</p> </li>
+						<li><p class="fragment grow">How deep is deep?</p></li>
+					</ul>
+                                        <div>
+                                        <div class="left" style="float: left; width: 50%">
+                                        <p>this is a new way  aaa aaaa aaaaaa aaaaa aaaaa aaaaaaaaaaaa aaaaaaa aaaaaaaaa aaaaaaaa aaaaaaaa aaaaaaa aaaaaaaa aaaa a</p>
+                                        </div>
+                                        <div class="right" style="float: right; width: 50%">
+                                        <p> this is another way </p>
+				        <img width="178" data-src="fig/fast_rcnn"> 
+				        <img width="378" data-src="fig/rcnn.jpg">
+                                        </div>
+                                        </div>
+                                </section>
+
 
 				<section>
 					<h2>Hello There</h2>
@@ -390,7 +649,7 @@ Reveal.addEventListener( 'customevent', function() {
 				controls: true,
 				progress: true,
 				history: true,
-				center: true,
+				center: false,
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
@@ -401,7 +660,8 @@ Reveal.addEventListener( 'customevent', function() {
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true },
+                                        { src: 'plugin/math/math.js', async: true}
 				]
 			});
 
