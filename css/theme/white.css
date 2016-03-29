@@ -74,6 +74,10 @@ body {
   margin: 20px 0;
   line-height: 1.3; 
   text-align: left; }
+.reveal pc {
+  margin: 20px 0;
+  line-height: 1.3; 
+  text-align: center; }
 
 /* Ensure certain elements are never larger than the slide itself */
 .reveal img,

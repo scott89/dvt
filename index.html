@@ -331,8 +331,98 @@
                                                 <li class="fragment">We should follow most recent pregress of deep learning by reading more papers and build solid foundation on machine learning as well.</li>
                                         </ul>
                                 </section>
+                                <section data-transition="zoom">
+                                        <h2>Dense Prediction</h2>
+                                        </br>
+                                        <ul>
+                                                <li><h3>Structured Learning</h3></li>
+                                                <li><h3>Weakly- and Semi- Supervised Learning</h3></li>
+                                        </ul>
+                                </section>
 
-
+                                <section>
+                                        <section>
+                                                <h3>Constrained Convolutional Neural Networks for Weakly Supervised Segmentation</h3>
+                                                <h6>Deeppak, Philipp, and Trevor</h6>
+                                                <h6>UC Berkeley</h6>
+                                                <img width=45% data-src="fig/ccnn.png">
+                                        </section>        
+                                        <section>
+                                                <h2>Semantic Segmentation</h2>
+                                                <p class="fragment">Given image I, predict pixel labels $X=\{x_0,\ldots,x_n\}$.</p>
+                                                <p class="fragment">CNN models the distribution by $Q(X|\theta,I)=\prod_i q_i(x_i|\theta,I)$,</p>
+                                                <p class="fragment">where $q_i(x_i|\theta,I)=\frac{1}{Z_i}\exp(f_i(x_i;\theta,I))$</p>
+                                        </section>
+                                        <section>
+                                                <h2>Fully and Weakly Supervised Segmentation</h2>
+                                                <p class="fragment">For fully supervised training:</p>
+                                                <pc class="fragment">$\arg \max\limits_{\theta} \sum_{I} Q(X|\theta, I)$</pc>
+                                                <br>
+                                                <p class="fragment"> For weakly supervised training:</p>
+                                                <pc class="fragment"> find $\theta$  <br>
+                                                                     subject to $A_i Q_i \geq b_I  \quad \forall I$</pc>
+                                        </section>
+                                        <section>
+                                                <h2>Weakly Supervised Segmentation</h2>
+                                                <img width=70% data-src="fig/constrained_training.png">
+                                                <p class="fragment"> However it is hard to directly optimize</p>
+                                                <pc class="fragment"> find $\theta$  <br>
+                                                                     subject to $A_i Q_i \geq b_I  \quad \forall I$</pc>
+                                        </section>
+                                        <section>
+                                                <h2>Constrained Optimization</h2>
+                                                <p text-align="center"> Introduce a latent probability distribution $P(X)$:</p>
+                                                    <br>
+                                                <pc>
+                                                    $\min \limits_{\theta,P} D(P(X)\|Q(X|\theta))$
+                                                    <br>
+                                                    subject to $AP \geq b, \quad \sum \limits_{X} P(X)=1$,
+                                                </pc>
+                                                <p>where KL-divergence $D(p(x)\|q(x))=\sum_x p(x)\log \frac{p(x)}{q(x)}$ measures the distance of two distributions.</p>
+                                        </section>
+                                        <section>
+                                                <h2>Constraints for Weak Segmentation</h2>
+                                                <p><b>Suppresion constraint</b> suppress any label $l$ that does not appear in the image:</p>
+                                                <pc>$\sum \limits_{i=1}^{n} p_i(l) \leq 0 \quad \forall l \notin \mathcal{L}_I$</pc>
+                                        </section>
+                                        <section>
+                                                <h2>Constraints for Weak Segmentation</h2>
+                                                <p><b>Foreground constraint</b> encourages foreground:</p>
+                                                <pc>$\sum \limits_{i=1}^{n} p_i(l) \geq a_l \quad \forall l \in \mathcal{L}_I$</pc>
+                                                <p> Compare with multiple instance learning (MIL) paradigm
+                                        </section>
+                                        <section>
+                                                <h2>Constraints for Weak Segmentation</h2>
+                                                <p><b>Background constraint</b> constrain background regions</p>
+                                                <pc>$a_0 \leq \sum \limits_{i=1}^{n} p_i(0) \leq b_0.$</pc>
+                                        </section>
+                                        <section>
+                                                <h2>Constraints for Weak Segmentation</h2>
+                                                <p><b>Size constraint</b> put an upper bound constraint on classes that are guaranteed to be small:</p>
+                                                <pc>$\sum \limits_{i=1}^{n} p_i(l) \leq b_l.$</pc>
+                                        </section>
+                                        <section>
+                                                <h2>Experiments</h2>
+                                                <p>VGG + Fully Connected CRF. Constrained Optimization is performed on course maps generated by VGG.</p>
+                                                <img width=100% data-src="fig/weak_comp.png">
+                                        </section>
+                                        <section>
+                                                <h2>Experiments</h2>
+                                                <p>VGG + Fully Connected CRF. Constrained Optimization is performed on course maps generated by VGG.</p>
+                                                <img width=100% data-src="fig/full_comp.png">
+                                        </section>
+                                </section>
+                                <section>
+                                        <section>
+                                               <h3>Weakly- and Semi-supervised Learning of DNN for Semantic Segmentaiton</h3> 
+                                               <table>
+                                                        <tbody>
+                                                                <tr> <td>George</td> <td></td><td></td></tr>
+                                                                <tr> <td>George</td> <td></td><td></td></tr>
+                                                        </tbody>
+                                               </table>
+                                        </section>
+                                </section>
 			</div>
 
 		</div>
