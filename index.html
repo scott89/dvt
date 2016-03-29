@@ -342,8 +342,11 @@
 
                                 <section>
                                         <section>
-                                                <h3>Constrained Convolutional Neural Networks for Weakly Supervised Segmentation</h3>
-                                                <h6>Deeppak, Philipp, and Trevor</h6>
+                                                <h3><a href="http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Pathak_Constrained_Convolutional_Neural_ICCV_2015_paper.pdf">
+						Constrained Convolutional Neural Networks for Weakly Supervised Segmentation</a></h3>
+                                                <h6>Deepak Pathak, 
+						<a href=http://www.philkr.net/home/>Philipp Krähenbühl</a>, 
+						<a href=http://bvlc.eecs.berkeley.edu/>Trevor Darrell</a></h6>
                                                 <h6>UC Berkeley</h6>
                                                 <img width=45% data-src="fig/ccnn.png">
                                         </section>        
@@ -414,15 +417,60 @@
                                 </section>
                                 <section>
                                         <section>
-                                               <h3>Weakly- and Semi-supervised Learning of DNN for Semantic Segmentaiton</h3> 
+                                               <h3><a href=http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Papandreou_Weakly-_and_Semi-Supervised_ICCV_2015_paper.pdf>
+					       Weakly- and Semi-supervised Learning of DNN for Semantic Segmentaiton</a></h3> 
                                                <table>
                                                         <tbody>
-                                                                <tr> <td>George</td> <td></td><td></td></tr>
-                                                                <tr> <td>George</td> <td></td><td></td></tr>
+                                                                <tr> <td border="none">G. Papandreou</td>
+								<td border="none">L. Chen</td>
+								<td border="none">K. Murphy</td>
+								<td border="none"><a href="http://www.stat.ucla.edu/~yuille/">
+								 A. Yuille</a></td></tr>
+                                                                <tr> <td border="none">Google, Inc.</td>
+								<td border="none">UCLA</td>
+								<td border="none">Google, Inc.</td>
+								<td border="none">UCLA</td></tr>
                                                         </tbody>
                                                </table>
+					       <br><br>
+					       <ul>
+					       		<li>Pixel-level annotations</li>
+					       		<li>Image-level annotations</li>
+					       		<li>Bounding box annotations</li>
+					       </ul>
                                         </section>
+					<section>
+						<h2>Image-level Annotations</h2>
+						<p>Formulate training as hard-EM approximation, with compete-data log likelihood:</p>
+						<pc>$Q(\theta;\theta^{'})=\sum \limits_{Y} P(Y|X,z;\theta^{'}) \log P(Y|X;\theta)$ <br> $\approx \log(\hat{Y}|X;\theta)$</pc>
+					</section>
+					<section>
+						<h2>Image-level Annotations</h2>
+						<p> E-step: update the latent segmentation</p>
+						<pc>$\hat{Y}=\arg \max \limits_{Y} P(Y,X;\theta^{'})P(z|Y)$</pc>
+						<br><br>
+						<p> M-step: minimize $Q(\theta;\theta^{'})$ using stochastic gradient descent.</p>
+						
+					</section>
+					<section>
+						<h2>Image-level Annotations</h2>
+						<p>In summary:</p>
+						<ol>
+							<li class="fragment">Refine latend segmentation $\hat{Y}$ with current network output and image label constraint.</li>
+							<br><br>
+							<li class="fragment">Train the network with refined segmentation $\hat{Y}$ as GT</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Bounding Box Annotations</h2>
+					</section>
+					<section>
+						<h2>Mixed Strong and Weak Annotations</h2>
+					</section>
                                 </section>
+				<section>
+					<h2></h2>
+				</section>
 			</div>
 
 		</div>
