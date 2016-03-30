@@ -487,6 +487,40 @@
 				        </section>
 
                                 </section>
+                                <section>
+                                        <section>
+                                                <p>$\arg \max \limits_{\theta} \sum \limits_{k=1}^{K} P(\alpha=k|X,\theta) \log P(\alpha) P(Y|X,\alpha,\theta)$ </p>
+                                                <p>$\mathcal{Q}(\theta,\theta^{old}) = \sum \limits_{k=1}^{K} P(\alpha=k|X,\theta^{old}) \log P(\alpha) P(Y|X,\alpha,\theta)$ </p>
+                                                <p>E-step: compute $P(\alpha=k|X,\theta^{old})$ given $\theta^{old}$</p>
+                                                <p>M-Step: maximize $\mathcal{Q}(\theta, \theta^{old})$ with respect to $\theta$</p>
+                                                                                        </section>
+                                        <section>
+                                                <p>For dictonary learning:</p>
+                                                <pc>$P(Y|X,\alpha,\theta) =\frac{1}{Z} \exp(-\|Y-H_{\alpha} \beta_{\alpha}\|)$,</pc>
+                                                <pc>$P(X|\alpha,\theta) = \frac{1}{F} \exp(-\|X-L_{\alpha} \beta_{\alpha}\|)$,</pc>
+                                                <pc>$\quad\theta = \{H_{\alpha},L_{\alpha}\}$,</pc>
+                                                <pc>$H_{\alpha} = \arg \max \limits_{H} \sum_{X} P(\alpha|X,\theta^{old}) \log P(Y|X,\alpha,\theta)$,</pc>
+                                                <pc>$=\arg \min \limits_{H} \sum_{X} P(\alpha|X,\theta^{old})\|Y-H\beta_{\alpha}\|$,</pc>
+                                                <p>and inference:</p>
+                                                <pc>$\hat{Y} = \arg \max \limits_{\tilde{Y}} \sum \limits_{\alpha=1}^{K} P(\alpha|X,\theta) \log P(\tilde{Y}|X, \alpha,\theta) $</pc>
+                                                <pc>$=\arg \min \limits_{\tilde{Y}} \sum \limits_{\alpha=1}^{K} P(\alpha|X,\theta) \|\tilde{Y}-H_{\alpha} \beta_{\alpha}\|$</pc>
+                                                <pc>$=\sum_{\alpha}P(\alpha|X,\theta) H_{\alpha} \beta_{\alpha}$</pc>
+                                        </section>
+                                        <section>
+                                                <p>For network training:</p>
+                                                <pc>$P(Y|X,\alpha,\theta) = \frac{1}{Z} \exp (-\|Y-G_{\alpha}(X;\theta_{\alpha})\|), \quad \theta=\{\theta_{\alpha}\}$,</pc>
+                                                <br>
+                                                <pc>$\max \limits_{\theta_{\alpha}} \sum \limits_{X} P(\alpha|X, \theta) \log P(Y|X, \alpha, \theta)$</pc>
+                                                <pc>$=\min \limits_{\theta_{\alpha}} \sum \limits_{X} P(\alpha|X, \theta) \|Y-G_{\alpha}(X;\theta_{\alpha})\|$</pc>
+                                                <p>and inference:</p>
+                                                <pc>$\hat{Y}=\arg \max \limits_{\tilde{Y}} E_{\alpha~P(\alpha|X,\theta)}(P(\alpha, \tilde{Y}, X| \theta))$</pc>
+                                                <pc>$=\arg \max \limits_{\tilde{Y}} \sum \limits_{\alpha} P(\alpha|X, \theta) \log P(\tilde{Y}|X,\alpha,\theta)$</pc>
+                                                <pc>$=\arg \min \limits_{\tilde{Y}} \sum \limits_{\alpha} P(\alpha|X, \theta) \|\tilde{Y} - G_{\alpha}(X;\theta_{\alpha})\|$</pc>
+                                                <pc>$=\sum \limits_{\alpha} P(\alpha|X,\theta) G_{\alpha}(X;\theta_{\alpha})$</pc>
+
+                                        </section>
+                                </section>
+
                                         
 			</div>
 
