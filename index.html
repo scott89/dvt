@@ -353,7 +353,7 @@
                                         </section>        
                                         <section>
                                                 <h2>Semantic Segmentation</h2>
-                                                <p class="fragment">Given image I, predict pixel labels $X=\{x_0,\ldots,x_n\}$.</p>
+                                                <p class="fragment">Given image $I$, predict pixel labels $X=\{x_0,\ldots,x_n\}$.</p>
                                                 <p class="fragment">CNN models the distribution by $Q(X|\theta,I)=\prod_i q_i(x_i|\theta,I)$,</p>
                                                 <p class="fragment">where $q_i(x_i|\theta,I)=\frac{1}{Z_i}\exp(f_i(x_i;\theta,I))$</p>
                                         </section>
@@ -464,14 +464,30 @@
 					</section>
 					<section>
 						<h2>Bounding Box Annotations</h2>
+                                                <img width=70% data-src="fig/bb-level.png">
 					</section>
+                                        <section>       
+						<h2>Bounding Box Annotations</h2>
+                                                <img width=60% data-src="fig/seg-level.png">
+                                        </section>
 					<section>
-						<h2>Mixed Strong and Weak Annotations</h2>
+						<h3>Mixed Strong and Weak Annotations</h3>
+                                                <img width=50% data-src="fig/mix.png">
 					</section>
                                 </section>
 				<section>
-					<h2></h2>
-				</section>
+                                        <section>
+                                                 <h3><a href="http://arxiv.org/pdf/1603.07188v1.pdf">Weakly-Supervised Semantic Segmentation using Motion Cues</a></h3>
+                                                 <h6>P. Tokmakov, K. Alahari, and <a href="http://lear.inrialpes.fr/people/schmid/">C. Schmid</a> <br> Inria</h6>
+                                                 <img width=70% data-src="fig/mcnn.png">
+				        </section>
+                                        <section>
+                                                 <h3><a href="http://arxiv.org/pdf/1603.07188v1.pdf">Weakly-Supervised Semantic Segmentation using Motion Cues</a></h3>
+                                                 <img width=80% data-src="fig/mcnn.png">
+				        </section>
+
+                                </section>
+                                        
 			</div>
 
 		</div>
